@@ -1,5 +1,6 @@
-import { addTax as _addTax } from "./add-tax";
-import { addTip as _addTip } from "./add-tip";
+import {addTax as _addTax} from './add-tax';
+import {addTip as _addTip} from './add-tip';
+import {ICalc} from './calc';
 
 /*
 All exported functions are higher-order functions that
@@ -19,7 +20,7 @@ But we can inject other dependencies by calling it like this:
 getTotal(injectedGetTax(), injectedAddTip())(5)
 */
 
-export const getTotal = (addTax = _addTax(), addTip = _addTip()) => (
+export const getTotal = (addTax:ICalc = _addTax(), addTip:ICalc = _addTip()) => (
   price: number
 ) => {
   return addTax(price) + addTip(price) + price;
